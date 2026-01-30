@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="تطبيق الترجمة الفورية - ترجم كلامك إلى 3 لغات في الوقت الفعلي">
+    <title>الترجمة الفورية | Live Translator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icon.png">
+</head>
+
+<body>
+    <div class="background-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                        <line x1="12" y1="19" x2="12" y2="22" />
+                    </svg>
+                </div>
+                <h1>الترجمة الفورية</h1>
+            </div>
+            <p class="subtitle">تحدث بالعربية وشاهد الترجمة الفورية لـ 3 لغات</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Original Speech Card -->
+            <div class="speech-card original-card">
+                <div class="card-header">
+                    <div class="lang-badge arabic-badge">
+                        <span class="flag">🇸🇦</span>
+                        <span>العربية</span>
+                    </div>
+                    <span class="live-indicator" id="liveIndicator">
+                        <span class="pulse"></span>
+                        جاري الاستماع...
+                    </span>
+                </div>
+                <div class="speech-text" id="originalText">
+                    <p class="placeholder-text">اضغط على زر الميكروفون وابدأ بالتحدث...</p>
+                </div>
+            </div>
+
+            <!-- Translations Grid -->
+            <div class="translations-grid">
+                <!-- English Translation -->
+                <div class="translation-card english-card">
+                    <div class="card-header">
+                        <div class="lang-badge english-badge">
+                            <span class="flag">🇬🇧</span>
+                            <span>English</span>
+                        </div>
+                        <div class="card-actions">
+                            <button class="action-icon copy-btn" data-lang="en" title="نسخ">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" />
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                                </svg>
+                            </button>
+                            <button class="action-icon speak-btn" data-lang="en-US" title="نطق">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="translation-text" id="englishText">
+                        <p class="placeholder-text">Translation will appear here...</p>
+                    </div>
+                </div>
+
+                <!-- French Translation -->
+                <div class="translation-card french-card">
+                    <div class="card-header">
+                        <div class="lang-badge french-badge">
+                            <span class="flag">🇫🇷</span>
+                            <span>Français</span>
+                        </div>
+                        <div class="card-actions">
+                            <button class="action-icon copy-btn" data-lang="fr" title="نسخ">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" />
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                                </svg>
+                            </button>
+                            <button class="action-icon speak-btn" data-lang="fr-FR" title="نطق">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="translation-text" id="frenchText">
+                        <p class="placeholder-text">La traduction apparaîtra ici...</p>
+                    </div>
+                </div>
+
+                <!-- Chinese Translation -->
+                <div class="translation-card chinese-card">
+                    <div class="card-header">
+                        <div class="lang-badge chinese-badge">
+                            <span class="flag">🇨🇳</span>
+                            <span>中文</span>
+                        </div>
+                        <div class="card-actions">
+                            <button class="action-icon copy-btn" data-lang="zh" title="نسخ">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" />
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                                </svg>
+                            </button>
+                            <button class="action-icon speak-btn" data-lang="zh-CN" title="نطق">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="translation-text" id="chineseText">
+                        <p class="placeholder-text">翻译将显示在这里...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls">
+                <button class="mic-button" id="micButton">
+                    <div class="mic-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                            <line x1="12" y1="19" x2="12" y2="22" />
+                        </svg>
+                    </div>
+                    <div class="mic-waves">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+                <p class="mic-label" id="micLabel">اضغط للبدء</p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="action-btn" id="clearBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                    </svg>
+                    مسح الكل
+                </button>
+            </div>
+        </main>
+
+        <!-- Toast Notification -->
+        <div class="toast" id="toast">
+            <span class="toast-message"></span>
+        </div>
+
+        <!-- Browser Support Warning -->
+        <div class="warning-modal" id="warningModal">
+            <div class="warning-content">
+                <div class="warning-icon">⚠️</div>
+                <h2>المتصفح غير مدعوم</h2>
+                <p>يرجى استخدام متصفح Chrome أو Edge للحصول على أفضل تجربة مع ميزة التعرف على الصوت.</p>
+                <button class="close-warning" id="closeWarning">فهمت</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(err => console.log('SW registration failed: ', err));
+            });
+        }
+    </script>
+    <script src="app.js?v=4"></script>
+</body>
+
+</html>
